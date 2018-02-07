@@ -25,14 +25,14 @@ connection.on("data", data => {
 });
 
 // Connection ended
-connection.on("end", data => {
-  console.log("Disconnected " + data);
+connection.on("end", () => {
+  console.log("Disconnected ");
   process.exit();
 });
 
 // Connection had error (or Ctrl+C)
-connection.on("error", data => {
-  console.log("Server error (disconnected)");
+connection.on("error", err => {
+  console.log("Server error (disconnected) " + err);
   process.exit();
 });
 
