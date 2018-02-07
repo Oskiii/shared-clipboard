@@ -1,5 +1,5 @@
 const net = require("net");
-const IP = "127.0.0.1";
+const IP = "0.0.0.0";
 const PORT = 8888;
 
 const clients = [];
@@ -27,10 +27,10 @@ const server = net.createServer(socket => {
   });
 
   // Connection error
-  socket.on("error", () => {
+  socket.on("error", (err) => {
     const index = clients.indexOf(socket);
     if (index > -1) {
-      console.log("Client error or force-quit (disconnected)");
+      console.log("Client error " + err);
       clients.splice(index, -1);
     }
   });
